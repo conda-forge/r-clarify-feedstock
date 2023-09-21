@@ -1,4 +1,4 @@
-{% set version = '0.1.3' %}
+{% set version = "0.2.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clarify_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clarify/clarify_{{ version }}.tar.gz
-  sha256: a5f481d795bd109bac0a7576ffb668aeb439a8da804e5b125cd696bdb8baba26
+  sha256: 58c724904611bc332ce1eb283fc52c40bb57fac95f9f3d01373d90a838d0d2c7
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -52,14 +52,9 @@ about:
   home: https://iqss.github.io/clarify/
   dev_url: https://github.com/iqss/clarify
   license: GPL-3.0-or-later
-  summary: Performs simulation-based inference as an alternative to the delta method for obtaining
-    valid confidence intervals and p-values for regression post-estimation quantities,
-    such as average marginal effects and predictions at representative values. This
-    framework for simulation-based inference is especially useful when the resulting
-    quantity is not normally distributed and the delta method approximation fails. The
-    methodology is described in King, Tomz, and Wittenberg (2000) <doi:10.2307/2669316>.
-    'clarify' is meant to replace some of the functionality of the archived package
-    'Zelig'; see the vignette "Translating Zelig to clarify" for replicating this functionality.
+  summary: Performs simulation-based inference as an alternative to the delta method for obtaining valid confidence intervals and p-values for regression post-estimation quantities, such as average marginal effects and predictions at representative values. This framework for simulation-based inference is especially useful
+    when the resulting quantity is not normally distributed and the delta method approximation fails. The methodology is described in King, Tomz, and Wittenberg (2000) <doi:10.2307/2669316>. 'clarify' is meant to replace some of the functionality of the archived package 'Zelig'; see the vignette "Translating Zelig to clarify"
+    for replicating this functionality.
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
