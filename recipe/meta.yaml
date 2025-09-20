@@ -1,4 +1,4 @@
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clarify_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clarify/clarify_{{ version }}.tar.gz
-  sha256: 98fd8f5db2de7cb27b6ccfed843e328a2a94b82c244101d0f81434c7760faa31
+  sha256: a38e8d5f916efee3a993fd7a9617a9a4b0ccf01c7eb77d0ea855a9624e50ea38
 
 build:
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
