@@ -1,4 +1,4 @@
-{% set version = "0.2.2" %}
+{% set version = "0.2.3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,14 +9,18 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/clarify_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/clarify/clarify_{{ version }}.tar.gz
-  sha256: a38e8d5f916efee3a993fd7a9617a9a4b0ccf01c7eb77d0ea855a9624e50ea38
+  sha256: 7cb3256e73542db1328b0237f8f0541e165fa260ec56b3e2588e73a434819ec0
 
 build:
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
@@ -24,22 +28,22 @@ requirements:
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-chk >=0.9.0
-    - r-ggplot2 >=3.4.0
-    - r-insight >=0.19.2
-    - r-marginaleffects >=0.14.0
-    - r-mvnfast >=0.2.6
-    - r-pbapply >=1.7_0
-    - r-rlang >=1.0.6
+    - r-arg >=0.1.1
+    - r-cli >=3.6.5
+    - r-ggplot2 >=3.5.0
+    - r-insight >=1.4.2
+    - r-marginaleffects >=0.30.0
+    - r-pbapply >=1.7_4
+    - r-rlang >=1.1.6
   run:
     - r-base
-    - r-chk >=0.9.0
-    - r-ggplot2 >=3.4.0
-    - r-insight >=0.19.2
-    - r-marginaleffects >=0.14.0
-    - r-mvnfast >=0.2.6
-    - r-pbapply >=1.7_0
-    - r-rlang >=1.0.6
+    - r-arg >=0.1.1
+    - r-cli >=3.6.5
+    - r-ggplot2 >=3.5.0
+    - r-insight >=1.4.2
+    - r-marginaleffects >=0.30.0
+    - r-pbapply >=1.7_4
+    - r-rlang >=1.1.6
 
 test:
   commands:
@@ -50,9 +54,9 @@ about:
   home: https://iqss.github.io/clarify/
   dev_url: https://github.com/iqss/clarify
   license: GPL-3.0-or-later
-  summary: Performs simulation-based inference as an alternative to the delta method for obtaining valid confidence intervals and p-values for regression post-estimation quantities, such as average marginal effects and predictions at representative values. This framework for simulation-based inference is especially useful
-    when the resulting quantity is not normally distributed and the delta method approximation fails. The methodology is described in King, Tomz, and Wittenberg (2000) <doi:10.2307/2669316>. 'clarify' is meant to replace some of the functionality of the archived package 'Zelig'; see the vignette "Translating Zelig to clarify"
-    for replicating this functionality.
+  summary: Performs simulation-based inference as an alternative to the delta method for obtaining valid confidence intervals and p-values for regression post-estimation quantities, such as average marginal effects and predictions at representative values. This framework for simulation-based inference is especially 
+    useful when the resulting quantity is not normally distributed and the delta method approximation fails. The methodology is described in King, Tomz, and Wittenberg (2000) <doi:10.2307/2669316>. 'clarify' is meant to replace some of the functionality of the archived package 'Zelig'; see the vignette "Translating 
+    Zelig to clarify" for replicating this functionality.
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
